@@ -74,8 +74,8 @@ x-airflow-common:
     # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
   volumes:
     - /home/ubuntu/yeardream_airflow/dags:/opt/airflow/dags
-    - /home/ubuntu/yeardream_airflow/logs:/opt/airflow/logs
-    - /home/ubuntu/yeardream_airflow/config:/opt/airflow/config
+    - /home/ubuntu/workspace/logs:/opt/airflow/logs
+    - /home/ubuntu/workspace/config:/opt/airflow/config
     - /home/ubuntu/yeardream_airflow/plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
