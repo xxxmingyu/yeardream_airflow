@@ -1,6 +1,6 @@
 from airflow import DAG
 import pendulum
-from airflow.operators.empy import EmptyOperator
+from airflow.operators.empty import EmptyOperator
 
 my_dag = DAG(
     dag_id="dags_bash_operator_standard",
