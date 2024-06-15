@@ -9,4 +9,4 @@ my_dag = DAG(
     catchup = False,
     tags=["homework"]
 )
-EmptyOperator(task_id="standart_t1", dag=my_dag)
+EmptyOperator(task_id="standard_t1", dag=my_dag)
