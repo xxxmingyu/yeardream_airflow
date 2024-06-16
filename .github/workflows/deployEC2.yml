@@ -1,0 +1,24 @@
+# deployec2.yml
+name: deploy to EC2
+
+on: # 아래 상황에서 실행해 주세요.
+  push: # push할 때
+    branches:
+      - master  # main 브랜치에 / 수업시간에는 master를 써서 master로 해주시면 됩니다.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: deploy to EC2
+      uses: appleboy/ssh-action@master # ssh 접속 오픈소스입니다.
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /home/ubuntu/yeardream_airflow # git pull을 실행할 EC2상의 경로를 작성해주세요.
+          git pull
