@@ -20,5 +20,7 @@ with DAG(
         print(f'phone: {phone}')
         from pprint import pprint
         pprint(kwargs)
+        print('start : ', kwargs['data_interval_start'])
+        print('end : ', kwargs['data_interval_end'])
 
     python_task_1 = regist3('hjkim', 'man', 'seoul', email='hjkim_sun@naver.com', phone='010')
