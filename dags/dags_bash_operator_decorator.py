@@ -2,6 +2,7 @@ from airflow.decorators import dag
 import pendulum
 from airflow.decorators import task
 from airflow.operators.empty import EmptyOperator
+from airflow.operators.bash import BashOperator
 
 @dag(dag_id='dags_bash_operator_decorator', 
      start_date=pendulum.datetime(2024, 5, 1, tz="Asia/Seoul"), 
