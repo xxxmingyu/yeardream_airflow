@@ -10,5 +10,5 @@ with DAG(
 ) as dag:
     sensor__tb_cycle_rent_use_day_info = SeoulApiDateSensorHw(
         task_id='sensor__List_air_quality_by_district_service',
-        dataset_nm='/xml/ListAirQualityByDistrictService'
+        dataset_nm='/ListAirQualityByDistrictService'
     )
