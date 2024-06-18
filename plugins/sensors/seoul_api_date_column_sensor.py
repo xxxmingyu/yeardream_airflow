@@ -24,6 +24,7 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         import requests
         import json
         import datetime
+        from dateutil.parser import parse
         connection = BaseHook.get_connection(self.http_conn_id)
         start_row = 1
         end_row = 1000
@@ -40,15 +41,16 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
                 contents = contents.get(i)
             for i in range(start_row, end_row):
                 self.log.info(type(contents[i].get(self.column_nm)))
-                key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d')
+                key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d%H%M')
                 targetday = datetime(2024, 6, 18)
-
-                if key == targetday:
+                keyparse = parse(key)
+                targetparse = parse(targetday)
+                if keyparse.date() == targetparse.date():
                     self.log.info('지정된 날에 저장된 값이 있습니다')
                     self.log.info(contents)
                     return True
 
-                if key < targetday:
+                if keyparse.date() < targetparse.date():
                     self.log.info('지정된 날에는 저장된 값이 없습니다')
                     return False
                 
