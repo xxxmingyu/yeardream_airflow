@@ -10,6 +10,5 @@ with DAG(
 ) as dag:
     sensor__tb_cycle_rent_use_day_info = SeoulApiDateSensor(
         task_id='sensor__List_air_quality_by_district_service',
-        dataset_nm='/xml/ListAirQualityByDistrictService',
-        check_date='{{data_interval_start.in_timezone("Asia/Seoul") | ds_nodash }}'
+        dataset_nm='/xml/ListAirQualityByDistrictService'
     )
