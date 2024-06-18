@@ -9,7 +9,7 @@ response 필드에 yyyymmdd 속성이 존재하는 데이터셋만 적용 가능
 class SeoulApiDateSensorHw(BaseSensorOperator):
     template_fields = ('endpoint','check_date')
 
-    def __init__(self, dataset_nm, check_date=None, **kwargs):
+    def __init__(self, dataset_nm, subcol_nm, column_nm, **kwargs):
         '''
         dataset_nm: 서울시 공공데이터 포털에서 센싱하고자 하는 데이터셋 명
         base_dt_col: 센싱 기준 컬럼 (yyyy.mm.dd... or yyyy/mm/dd... 형태만 가능)
@@ -18,18 +18,14 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         super().__init__(**kwargs)
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json' + dataset_nm + '/1/5'  # 5건만 추출
-        self.check_date = check_date
-        self.subcol_nm = kwargs.get('subcol_nm')
-        self.column_nm = kwargs.get('column_nm')
+        self.subcol_nm = subcol_nm
+        self.column_nm = column_nm
 
     def poke(self, context):
         import requests
         import json
         connection = BaseHook.get_connection(self.http_conn_id)
-        if self.check_date == None:
-            url = f'http://{connection.host}:{connection.port}/{self.endpoint}'
-        else:
-            url = f'http://{connection.host}:{connection.port}/{self.endpoint}/{self.check_date}'
+        url = f'http://{connection.host}:{connection.port}/{self.endpoint}'
         self.log.info(f'url: {url}')
         response = requests.get(url)
         contents = json.loads(response.text)
