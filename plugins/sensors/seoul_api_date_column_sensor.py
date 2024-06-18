@@ -39,7 +39,7 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
             self.log.info(f'response: {contents}')
             for i in self.subcol_nm:
                 contents = contents.get(i)
-            for i in range(start_row, end_row):
+            for i in range(1000):
                 self.log.info(type(contents[i].get(self.column_nm)))
                 key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d%H%M')
                 targetday = datetime.datetime(2024, 6, 18)
