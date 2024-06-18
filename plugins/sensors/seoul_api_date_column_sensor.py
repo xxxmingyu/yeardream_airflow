@@ -40,7 +40,7 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
                 contents = contents.get(i)
             for i in range(start_row, end_row):
                 key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d')
-                targetday = datetime(2024, 06, 18)
+                targetday = datetime(2024, 6, 18)
 
                 if key == targetday:
                     self.log.info('지정된 날에 저장된 값이 있습니다')
