@@ -1,4 +1,4 @@
-from sensors.seoul_api_date_sensor import SeoulApiDateSensor
+from sensors.seoul_api_date_column_sensor import SeoulApiDateSensorHw
 from airflow import DAG
 import pendulum
 
@@ -8,7 +8,7 @@ with DAG(
     schedule='0 9 * * *',
     catchup=False
 ) as dag:
-    sensor__tb_cycle_rent_use_day_info = SeoulApiDateSensor(
+    sensor__tb_cycle_rent_use_day_info = SeoulApiDateSensorHw(
         task_id='sensor__List_air_quality_by_district_service',
         dataset_nm='/xml/ListAirQualityByDistrictService'
     )

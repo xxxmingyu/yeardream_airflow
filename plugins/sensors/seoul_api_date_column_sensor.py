@@ -6,7 +6,7 @@ from airflow.hooks.base import BaseHook
 response 필드에 yyyymmdd 속성이 존재하는 데이터셋만 적용 가능
 '''
 
-class SeoulApiDateSensor(BaseSensorOperator):
+class SeoulApiDateSensorHw(BaseSensorOperator):
     template_fields = ('endpoint','check_date')
 
     def __init__(self, dataset_nm, check_date=None, **kwargs):
