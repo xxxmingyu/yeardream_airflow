@@ -19,6 +19,8 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json' + dataset_nm + '/1/5'  # 5건만 추출
         self.check_date = check_date
+        self.subcol_nm = subcol_nm
+        self.column_nm = column_nm
 
     def poke(self, context):
         import requests
@@ -35,3 +37,5 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         code = contents.get('CODE')
         keys = contents.get('ListAirQualityByDistrictService').get('row')[0].get('MSRDATE')
         self.log.info(f'keys: {keys}')
+        self.log.info(self.subcol_nm)
+        self.log.info(self.column_nm)
