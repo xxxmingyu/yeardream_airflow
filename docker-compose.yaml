@@ -82,6 +82,7 @@ x-airflow-common:
     - /home/ubuntu/yeardream_airflow/logs:/opt/airflow/logs
     - /home/ubuntu/yeardream_airflow/config:/opt/airflow/config
     - /home/ubuntu/yeardream_airflow/plugins:/opt/airflow/plugins
+    - /home/ubuntu/ingest:/opt/airflow/ingest
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
