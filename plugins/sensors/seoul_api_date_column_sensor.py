@@ -24,7 +24,6 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         import requests
         import json
         import datetime
-        from dateutil.parser import parse
         connection = BaseHook.get_connection(self.http_conn_id)
         start_row = 1
         end_row = 1000
