@@ -19,8 +19,8 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json' + dataset_nm + '/1/5'  # 5건만 추출
         self.check_date = check_date
-        self.subcol_nm = subcol_nm
-        self.column_nm = column_nm
+        self.subcol_nm = kwargs.get('subcol_nm')
+        self.column_nm = kwargs.get('column_nm')
 
     def poke(self, context):
         import requests
