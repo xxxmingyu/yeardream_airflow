@@ -42,7 +42,7 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
             for i in range(1000):
                 self.log.info(type(contents[i].get(self.column_nm)))
                 key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d%H%M')
-                targetday = datetime.datetime(2024, 6, 18)
+                targetday = datetime.datetime(2024, 6, 19)
                 if key.year == targetday.year and key.month == targetday.month and key.day == targetday.day:
                     self.log.info('지정된 날에 저장된 값이 있습니다')
                     self.log.info(contents)
