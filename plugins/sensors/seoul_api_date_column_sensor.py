@@ -42,7 +42,7 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
             for i in range(start_row, end_row):
                 self.log.info(type(contents[i].get(self.column_nm)))
                 key = datetime.datetime.strptime(contents[i].get(self.column_nm), '%Y%m%d%H%M')
-                targetday = datetime(2024, 6, 18)
+                targetday = datetime.datetime(2024, 6, 18)
                 keyparse = parse(key)
                 targetparse = parse(targetday)
                 if keyparse.date() == targetparse.date():
