@@ -33,5 +33,5 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         contents = json.loads(response.text)
         self.log.info(f'response: {contents}')
         code = contents.get('CODE')
-        keys = contents.keys().keys().keys()
+        keys = contents.values()
         self.log.info(f'keys: {keys}')
