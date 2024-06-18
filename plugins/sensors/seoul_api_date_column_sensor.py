@@ -2,12 +2,11 @@ from airflow.sensors.base import BaseSensorOperator
 from airflow.hooks.base import BaseHook
 '''
 서울시 공공데이터 API 추출시 특정 날짜로 업데이트 되었는지 확인하는 센서 
-{dataset}/1/5/{yyyymmdd} 형태로 조회하는 데이터셋만 적용 가능
 response 필드에 yyyymmdd 속성이 존재하는 데이터셋만 적용 가능
 '''
 
 class SeoulApiDateSensorHw(BaseSensorOperator):
-    template_fields = ('endpoint','check_date')
+    template_fields = ('endpoint')
 
     def __init__(self, dataset_nm, subcol_nm, column_nm, **kwargs):
         '''
