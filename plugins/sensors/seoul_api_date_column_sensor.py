@@ -33,5 +33,5 @@ class SeoulApiDateSensorHw(BaseSensorOperator):
         contents = json.loads(response.text)
         self.log.info(f'response: {contents}')
         code = contents.get('CODE')
-        keys = contents.get('ListAirQualityByDistrictService').get('row').get('MSRDATE')
+        keys = contents.get('ListAirQualityByDistrictService').get('row')[0].get('MSRDATE')
         self.log.info(f'keys: {keys}')
